@@ -502,38 +502,32 @@ function renderTopHeader() {
         <span>SHARE</span>
       </button>
 
-      <button class="vex-header-icon-btn" onclick="switchMainTab('quiz')" title="Chặng 3: Làm Trắc nghiệm cuối buổi">
+      <button class="vex-header-icon-btn" onclick="switchMainTab('quiz')" title="Làm Trắc nghiệm cuối buổi">
         <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
-        <span>QUIZ</span>
+        <span>FEEDBACK</span>
       </button>
     </div>
   `;
 }
 
 // ----------------------------------------------------------------------------
-// 2. SUB-TOOLBAR (`Code 🔊` | `Drive 🎮` + Right White Square Buttons)
+// 2. SUB-TOOLBAR (`Code 🔊` + Right White Square Buttons - Removed Drive & Báo cáo PH/QC)
 // ----------------------------------------------------------------------------
 function renderSubToolbar() {
   const subEl = document.getElementById("vex-sub-toolbar");
   if (!subEl) return;
 
-  const unlockedCount = Object.keys(appState.analytics.unlockedBlocks).length;
-  const totalBlocks = appState.analytics.totalUnlockQuestions;
-  const solvedLvls = Object.keys(appState.analytics.levelsCompleted).length;
-  const totalLvls = getCurrentSession().levels.length;
-
   subEl.innerHTML = `
     <div class="vex-mode-tabs">
       <button class="vex-mode-tab ${appState.activeMainTab === 'code' ? 'active' : ''}"
               onclick="switchMainTab('code')">
-        <span>🧱</span>
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+          <path d="M4 6h16v4H4zm0 6h10v4H4z"/>
+        </svg>
         <span>Code</span>
-        <span style="font-size:12px;">🔊</span>
-      </button>
-      <button class="vex-mode-tab ${appState.activeMainTab === 'drive' ? 'active' : ''}"
-              onclick="switchMainTab('drive')">
-        <span>🎮</span>
-        <span>Drive</span>
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+          <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+        </svg>
       </button>
       <button class="vex-mode-tab ${appState.activeMainTab === 'hardware' ? 'active' : ''}"
               onclick="switchMainTab('hardware')">
@@ -545,38 +539,34 @@ function renderSubToolbar() {
         <span>📝</span>
         <span>3. Trắc nghiệm</span>
       </button>
-      <button class="vex-mode-tab ${appState.activeMainTab === 'report' ? 'active' : ''}"
-              onclick="switchMainTab('report')">
-        <span>🏆</span>
-        <span>Báo cáo PH/QC (${unlockedCount}/${totalBlocks} lệnh • ${solvedLvls}/${totalLvls} màn)</span>
-      </button>
     </div>
 
     <div class="vex-sub-tools-right">
-      <button class="vex-tool-square-btn ${appState.showPlaygroundDock ? 'active' : ''}"
-              onclick="togglePlaygroundDock()"
-              title="Đóng/Mở Sa bàn Nhiệm vụ 2.5D bên phải">
-        🗺️
-      </button>
       <button class="vex-tool-square-btn"
               onclick="openBluetoothModal()"
-              title="Kết nối Bluetooth VEX GO Brain & Xem gói tin BLE">
+              title="Code Viewer / Kết nối Bluetooth VEX GO Brain">
         &lt;&gt;
       </button>
       <button class="vex-tool-square-btn"
               onclick="toggleDevicesModal()"
-              title="Cấu hình Thiết bị & Cổng Smart Ports (Motor1, Drivetrain, Eye, Magnet)">
-        🔌
+              title="Cấu hình Thiết bị & Cổng Smart Ports">
+        <svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor">
+          <path d="M6 3v6h2V3h2v6h2V3h2v6h2V3h2v8c0 2.21-1.79 4-4 4v6h-4v-6c-2.21 0-4-1.79-4-4V3h2z"/>
+        </svg>
       </button>
-      <button class="vex-tool-square-btn"
-              onclick="toggleSound()"
-              title="Bật/Tắt Âm thanh">
-        ${window.soundFX && window.soundFX.enabled ? '🔊' : '🔇'}
+      <button class="vex-tool-square-btn ${appState.showPlaygroundDock ? 'active' : ''}"
+              onclick="togglePlaygroundDock()"
+              title="Đóng/Mở Sa bàn Nhiệm vụ 2.5D">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+          <path d="M12 4C6.48 4 2 8.48 2 14c0 2.76 1.12 5.26 2.93 7.07l1.41-1.41C4.89 18.22 4 16.21 4 14c0-4.42 3.58-8 8-8s8 3.58 8 8c0 2.21-.89 4.22-2.34 5.66l1.41 1.41C20.88 19.26 22 16.76 22 14c0-5.52-4.48-10-10-10zm1 10.59V8h-2v6.59l-2.29 2.29 1.41 1.41L12 16.41l1.88 1.88 1.41-1.41L13 14.59z"/>
+        </svg>
       </button>
       <button class="vex-tool-square-btn"
               onclick="switchMainTab('builder')"
-              title="Giáo viên: Thiết kế Sa bàn & Nạp JSON">
-        ?
+              title="Trợ giúp & Soạn bài JSON">
+        <svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"/>
+        </svg>
       </button>
     </div>
   `;
@@ -609,14 +599,12 @@ function renderMainBody() {
 // ============================================================================
 function renderVexCodeWorkspaceHTML() {
   const categories = [
-    { id: "motion",     label: "Motion",     color: "#85a5ff" },
-    { id: "drivetrain", label: "Drivetrain", color: "#4c97ff" },
-    { id: "inertial",   label: "Inertial",   color: "#5bc0be" },
-    { id: "eye",        label: "Eye",        color: "#40bf9a" },
-    { id: "magnet",     label: "Magnet",     color: "#6b73ff" },
-    { id: "console",    label: "Console",    color: "#8c82fc" },
-    { id: "logic",      label: "Logic",      color: "#f5a623" },
-    { id: "switch",     label: "Switch",     color: "#52c498" }
+    { id: "motion",   label: "Motion",   color: "#85a5ff" },
+    { id: "inertial", label: "Inertial", color: "#5bc0be" },
+    { id: "eye",      label: "Eye",      color: "#68c3a3" },
+    { id: "console",  label: "Console",  color: "#9b95ff" },
+    { id: "logic",    label: "Logic",    color: "#f5a623" },
+    { id: "switch",   label: "Switch",   color: "#52c498" }
   ];
 
   const railHTML = categories.map(cat => `
@@ -636,8 +624,11 @@ function renderVexCodeWorkspaceHTML() {
     <aside class="vex-category-rail">
       ${railHTML}
       <div style="margin-top:auto; padding-top:10px;">
-        <button class="vex-tool-square-btn" onclick="togglePlaygroundDock()" title="Mở Sa bàn 2.5D">
-          🗺️
+        <button class="vex-tool-square-btn" style="color:#0072ce; border-color:#b8dcf5; background:#e1f0fa;"
+                onclick="togglePlaygroundDock()" title="Đóng/Mở Sa bàn 2.5D">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+            <path d="M4 6h10v4H4zm0 6h10v4H4zm14-2l-3 3 3 3v-6z"/>
+          </svg>
         </button>
       </div>
     </aside>
@@ -804,9 +795,6 @@ function renderSingleFlyoutBlockHTML(block, isMissionBlock) {
          onclick="onTapFlyoutBlock('${block.block_id}')"
          title="Chạm để trả lời câu hỏi Khóa Tư Duy & ghép vào chương trình">
       ${innerContentHTML}
-      <span class="flyout-lock-pill ${isUnlocked ? 'unlocked' : ''}">
-        ${isUnlocked ? '✓' : '🔒 Hỏi'}
-      </span>
     </div>
   `;
 }
