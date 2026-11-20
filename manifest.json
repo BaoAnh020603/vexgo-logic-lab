@@ -1,0 +1,17 @@
+{
+  "name": "VEX GO Logic Lab - MindX Thuận An",
+  "short_name": "VEX GO Lab",
+  "description": "Nền tảng Thực hành Sa bàn 2.5D & Khóa Tư Duy Ghép Lệnh VEX GO dành cho iPad tại MindX Thuận An",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "orientation": "landscape",
+  "background_color": "#0F172A",
+  "theme_color": "#0284C7",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%230284C7'/><rect x='20' y='25' width='60' height='50' rx='12' fill='%23F8FAFC'/><circle cx='38' cy='48' r='8' fill='%230284C7'/><circle cx='62' cy='48' r='8' fill='%2310B981'/><rect x='34' y='62' width='32' height='5' rx='2.5' fill='%230F172A'/></svg>",
+      "sizes": "192x192",
+      "type": "image/svg+xml"
+    }
+  ]
+}

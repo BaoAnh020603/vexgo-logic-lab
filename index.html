@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="VEXcode GO Lab" />
+  <meta name="theme-color" content="#0072CE" />
+  <title>VEXcode GO — MindX Logic Lab (Bluetooth BLE & Sa bàn 2.5D)</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="css/ipad-theme.css" />
+</head>
+<body>
+  <div class="vexcode-app-shell">
+    <!-- 1. Official VEXcode GO Royal Blue Header Bar -->
+    <header id="vex-top-header" class="vex-top-header"></header>
+
+    <!-- 2. Light Blue Sub-Toolbar (Code 🔊 | Drive 🎮 + Right Tool Icons) -->
+    <nav id="vex-sub-toolbar" class="vex-sub-toolbar"></nav>
+
+    <!-- 3. Main VEXcode Workspace (Category Rail + Block Flyout + White Canvas + 2.5D Playground Dock) -->
+    <main id="vex-main-body" class="vex-main-body"></main>
+
+    <!-- 4. Bottom Status Bar (▶ Errors ⚠️ 0 ❌ 0 + Live Bluetooth Status) -->
+    <footer id="vex-bottom-error-bar" class="vex-bottom-error-bar"></footer>
+
+    <!-- 5. Modals: Block-Unlocking Question Popup, Bluetooth BLE Pairing, Smart Ports Config -->
+    <div id="unlock-modal-root"></div>
+    <div id="bluetooth-modal-root"></div>
+    <div id="devices-modal-root"></div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/sound.js"></script>
+  <script src="js/bluetooth.js"></script>
+  <script src="js/courses-data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
