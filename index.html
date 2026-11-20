@@ -5,35 +5,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <meta name="apple-mobile-web-app-title" content="VEXcode GO Lab" />
+  <meta name="apple-mobile-web-app-title" content="VEX GO Quiz" />
   <meta name="theme-color" content="#0072CE" />
-  <title>VEXcode GO — MindX Logic Lab (Bluetooth BLE & Sa bàn 2.5D)</title>
+  <title>VEX GO MindX — Trắc Nghiệm Luân Phiên Theo Nhóm (PREA • PREB • PREI)</title>
   <link rel="manifest" href="manifest.json" />
   <link rel="stylesheet" href="css/ipad-theme.css" />
 </head>
 <body>
-  <div class="vexcode-app-shell">
-    <!-- 1. Official VEXcode GO Royal Blue Header Bar -->
-    <header id="vex-top-header" class="vex-top-header"></header>
+  <div class="quiz-app-shell">
+    <!-- 1. Top VEX GO Header & Course/Session Selector ([PREA] Buổi 1: Cuộc Dạo Chơi Ở Thảo Cầm Viên...) -->
+    <header id="top-vex-bar" class="top-vex-bar"></header>
 
-    <!-- 2. Light Blue Sub-Toolbar (Code 🔊 | Drive 🎮 + Right Tool Icons) -->
-    <nav id="vex-sub-toolbar" class="vex-sub-toolbar"></nav>
+    <!-- 2. Group Selector & Turn-Balance Ribbon (Chia 5 học viên: Nhóm 1 (2 bạn) / Nhóm 2 (2 bạn) / Nhóm 3 bạn) -->
+    <section id="group-turn-ribbon" class="group-turn-ribbon"></section>
 
-    <!-- 3. Main VEXcode Workspace (Category Rail + Block Flyout + White Canvas + 2.5D Playground Dock) -->
-    <main id="vex-main-body" class="vex-main-body"></main>
+    <!-- 3. Main Turn-Based Quiz Arena / Individual Score Report / Teacher Editor -->
+    <main id="quiz-main-viewport" class="quiz-main-viewport"></main>
 
-    <!-- 4. Bottom Status Bar (▶ Errors ⚠️ 0 ❌ 0 + Live Bluetooth Status) -->
-    <footer id="vex-bottom-error-bar" class="vex-bottom-error-bar"></footer>
-
-    <!-- 5. Modals: Block-Unlocking Question Popup, Bluetooth BLE Pairing, Smart Ports Config -->
-    <div id="unlock-modal-root"></div>
-    <div id="bluetooth-modal-root"></div>
-    <div id="devices-modal-root"></div>
+    <!-- 4. Mandatory "Pass the iPad to Teammate" Lock Gate Modal -->
+    <div id="handoff-modal-root"></div>
+    <div id="edit-group-modal-root"></div>
   </div>
 
-  <!-- Scripts -->
   <script src="js/sound.js"></script>
-  <script src="js/bluetooth.js"></script>
   <script src="js/courses-data.js"></script>
   <script src="js/app.js"></script>
 </body>

@@ -1,42 +1,24 @@
 /* ==========================================================================
-   VEXCODE GO (codego.vex.com) AUTHENTIC INTERFACE + MINDX LOGIC LAB
-   Pixel-accurate VEXcode GO Look & Feel + iPad Touch + Web Bluetooth
+   VEX GO TURN-BASED GROUP QUIZ SYSTEM (CHỐNG 1 BẠN LÀM 1 BẠN NHÌN)
+   Optimized for iPad Classroom Use at MindX Thuận An (5 Students / 2-3 per Group)
    ========================================================================== */
 
 :root {
-  /* Official VEXcode GO Palette */
-  --vex-header-blue: #0072ce;
-  --vex-header-dark: #005bb5;
-  --vex-go-teal: #008b8b;
-  --vex-subbar-blue: #b8dcf5;
-  --vex-subbar-tab-inactive: #95c8ee;
-  --vex-rail-bg: #f1f3f6;
-  --vex-flyout-bg: #f4f6f8;
-  --vex-canvas-bg: #ffffff;
-  --vex-border: #d0d7de;
+  --vex-blue: #0072ce;
+  --vex-blue-dark: #005596;
+  --vex-teal: #008b8b;
+  --bg-page: #f0f6fc;
+  --bg-card: #ffffff;
+  --text-main: #0f172a;
+  --text-sub: #475569;
+  --border-light: #cbd5e1;
 
-  /* Official VEXcode GO Block Category Colors */
-  --cat-motion: #85a5ff;
-  --cat-motion-border: #597ef7;
-  --cat-drivetrain: #4c97ff;
-  --cat-drivetrain-border: #2b73d9;
-  --cat-inertial: #5bc0be;
-  --cat-eye: #40bf9a;
-  --cat-eye-border: #2b9977;
-  --cat-console: #8c82fc;
-  --cat-console-border: #685dd8;
-  --cat-logic: #f5a623;
-  --cat-logic-border: #d48806;
-  --cat-switch: #52c498;
-  --cat-events: #ffbf00;
-  --cat-events-border: #cc9900;
-  --cat-magnet: #6b73ff;
-  --cat-magnet-border: #4a52d9;
-  --cat-led: #9966ff;
-  --cat-led-border: #7742e0;
-
-  --text-dark: #1e293b;
-  --text-muted: #64748b;
+  --p1-color: #0284c7;
+  --p1-bg: #e0f2fe;
+  --p2-color: #059669;
+  --p2-bg: #d1fae5;
+  --p3-color: #7c3aed;
+  --p3-bg: #ede9fe;
 }
 
 * {
@@ -58,1053 +40,641 @@ html, body {
   width: 100%;
   height: 100dvh;
   overflow: hidden;
-  background: #ffffff;
-  color: var(--text-dark);
-  font-family: 'Helvetica Neue', 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+  background: var(--bg-page);
+  color: var(--text-main);
+  font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
   touch-action: manipulation;
 }
 
-.vexcode-app-shell {
+.quiz-app-shell {
   width: 100%;
   height: 100dvh;
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  background: #fff;
 }
 
 /* ==========================================================================
-   1. TOP ROYAL BLUE HEADER BAR (Exact codego.vex.com replica)
+   1. VEXCODE GO TOP HEADER BAR
    ========================================================================== */
-.vex-top-header {
-  height: 48px;
-  background: var(--vex-header-blue);
+.top-vex-bar {
+  height: 54px;
+  background: var(--vex-blue);
   color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 10px 0 0;
+  padding: 0 14px 0 0;
   flex-shrink: 0;
-  z-index: 40;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 2px 8px rgba(0, 114, 206, 0.25);
+  z-index: 30;
 }
 
-.vex-header-left {
+.top-left-cluster {
   display: flex;
   align-items: center;
   height: 100%;
-  gap: 2px;
-}
-
-/* Teal "GO" corner logo box */
-.vex-go-logo-box {
-  height: 100%;
-  padding: 0 14px;
-  background: var(--vex-go-teal);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 900;
-  font-size: 23px;
-  letter-spacing: -0.5px;
-  color: #ffffff;
-  font-style: italic;
-  margin-right: 4px;
-  cursor: pointer;
-}
-
-.vex-header-menu-btn {
-  height: 38px;
-  padding: 0 11px;
-  background: transparent;
-  border: none;
-  border-radius: 6px;
-  color: #ffffff;
-  font-size: 13px;
-  font-weight: 600;
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  cursor: pointer;
-  transition: background 0.14s ease;
-}
-
-.vex-header-menu-btn:hover, .vex-header-menu-btn.active {
-  background: rgba(255, 255, 255, 0.16);
-}
-
-.vex-header-icon-btn {
-  height: 42px;
-  padding: 2px 10px;
-  background: transparent;
-  border: none;
-  border-radius: 6px;
-  color: #ffffff;
-  display: inline-flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 2px;
-  cursor: pointer;
-  font-size: 9.5px;
-  font-weight: 800;
-  letter-spacing: 0.3px;
-  text-transform: uppercase;
-  transition: background 0.14s ease;
-}
-
-.vex-header-icon-btn:hover {
-  background: rgba(255, 255, 255, 0.16);
-}
-
-.vex-header-icon-btn:disabled {
-  opacity: 0.45;
-  cursor: not-allowed;
-}
-
-.vex-header-icon-btn svg {
-  width: 18px;
-  height: 18px;
-  fill: currentColor;
-}
-
-.vex-divider-v {
-  width: 1px;
-  height: 28px;
-  background: rgba(255, 255, 255, 0.25);
-  margin: 0 4px;
-}
-
-/* Center Project Title Box */
-.vex-header-center {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.vex-project-pill {
-  height: 34px;
-  padding: 0 14px;
-  background: rgba(255, 255, 255, 0.18);
-  border: 1px solid rgba(255, 255, 255, 0.28);
-  border-radius: 6px;
-  color: #ffffff;
-  font-size: 13px;
-  font-weight: 700;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  cursor: pointer;
-}
-
-.vex-course-select-top {
-  background: transparent;
-  border: none;
-  color: #ffffff;
-  font-size: 13px;
-  font-weight: 700;
-  outline: none;
-  cursor: pointer;
-}
-
-.vex-course-select-top option {
-  color: #0f172a;
-  background: #ffffff;
-}
-
-.vex-save-status {
-  font-size: 11.5px;
-  color: rgba(255, 255, 255, 0.78);
-  font-weight: 500;
-  margin-left: 4px;
-}
-
-/* Right Brain Bluetooth & Transport Controls */
-.vex-header-right {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-
-.brain-btn-connected {
-  background: rgba(16, 185, 129, 0.28) !important;
-  border: 1.5px solid #34d399 !important;
-  color: #a7f3d0 !important;
-}
-
-.brain-btn-scanning {
-  background: rgba(245, 158, 11, 0.3) !important;
-  border: 1.5px solid #fbbf24 !important;
-  animation: pulseBrain 1s infinite alternate;
-}
-
-@keyframes pulseBrain {
-  from { opacity: 0.7; }
-  to { opacity: 1; }
-}
-
-.start-btn-highlight {
-  color: #86efac !important;
-}
-
-.step-btn-highlight {
-  color: #fde047 !important;
-}
-
-/* ==========================================================================
-   2. LIGHT BLUE SUB-HEADER BAR (`Code 🔊` | `Drive 🎮` | Right Tool Icons)
-   ========================================================================== */
-.vex-sub-toolbar {
-  height: 44px;
-  background: var(--vex-subbar-blue);
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  padding: 0 12px;
-  flex-shrink: 0;
-  border-bottom: 1px solid #9ec5e6;
-}
-
-.vex-mode-tabs {
-  display: flex;
-  align-items: flex-end;
-  gap: 4px;
-  height: 100%;
-  padding-top: 6px;
-}
-
-.vex-mode-tab {
-  height: 38px;
-  padding: 0 16px;
-  border: none;
-  border-radius: 10px 10px 0 0;
-  background: var(--vex-subbar-tab-inactive);
-  color: #005596;
-  font-size: 14px;
-  font-weight: 700;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  cursor: pointer;
-  transition: all 0.14s ease;
-}
-
-.vex-mode-tab:hover {
-  background: #cde6f9;
-}
-
-.vex-mode-tab.active {
-  background: #ffffff;
-  color: #0072ce;
-  box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.06);
-}
-
-.vex-sub-tools-right {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  height: 100%;
-}
-
-.vex-tool-square-btn {
-  width: 32px;
-  height: 32px;
-  border-radius: 7px;
-  border: 1px solid rgba(0, 114, 206, 0.2);
-  background: #ffffff;
-  color: #64748b;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  font-weight: 800;
-  font-size: 13px;
-  transition: all 0.14s ease;
-}
-
-.vex-tool-square-btn:hover, .vex-tool-square-btn.active {
-  color: #0072ce;
-  border-color: #0072ce;
-  background: #f0f8ff;
-}
-
-/* ==========================================================================
-   3. WORKSPACE BODY: CATEGORY RAIL + BLOCK FLYOUT + WHITE CANVAS + SA BÀN
-   ========================================================================== */
-.vex-main-body {
-  flex: 1;
-  display: flex;
-  overflow: hidden;
-  position: relative;
-}
-
-/* 3A. Left Category Rail (68px wide with round colored dots) */
-.vex-category-rail {
-  width: 68px;
-  background: var(--vex-rail-bg);
-  border-right: 1px solid var(--vex-border);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 10px 0;
-  gap: 6px;
-  flex-shrink: 0;
-  overflow-y: auto;
-}
-
-.vex-cat-item {
-  width: 58px;
-  padding: 6px 2px;
-  border-radius: 8px;
-  border: none;
-  background: transparent;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-  cursor: pointer;
-  color: #334155;
-  font-size: 10.5px;
-  font-weight: 600;
-  transition: background 0.12s ease;
-}
-
-.vex-cat-item:hover {
-  background: rgba(0, 114, 206, 0.08);
-}
-
-.vex-cat-item.active {
-  background: #dde8f3;
-  font-weight: 800;
-  color: #000;
-}
-
-.vex-cat-circle {
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  border: 1.5px solid rgba(0, 0, 0, 0.15);
-}
-
-/* 3B. Block Flyout Drawer (Exact Motion / Drivetrain / Eye / Magnet blocks) */
-.vex-block-flyout {
-  width: 330px;
-  background: var(--vex-flyout-bg);
-  border-right: 1px solid var(--vex-border);
-  padding: 14px 14px 30px 14px;
-  overflow-y: auto;
-  flex-shrink: 0;
-  display: flex;
-  flex-direction: column;
   gap: 10px;
 }
 
-.flyout-cat-title {
-  font-size: 15px;
-  font-weight: 800;
-  color: #0f172a;
+.go-logo-badge {
+  height: 100%;
+  padding: 0 16px;
+  background: var(--vex-teal);
+  font-size: 23px;
+  font-weight: 900;
+  font-style: italic;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: -0.5px;
 }
 
-.flyout-sub-title {
+.session-picker-pill {
+  height: 38px;
+  padding: 0 12px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.session-select {
+  background: transparent;
+  border: none;
+  color: #ffffff;
   font-size: 13.5px;
-  font-weight: 500;
-  color: #334155;
-  margin-top: 4px;
-  margin-bottom: 2px;
+  font-weight: 800;
+  outline: none;
+  cursor: pointer;
+  max-width: 410px;
+}
+
+.session-select option {
+  color: #0f172a;
+  background: #ffffff;
+}
+
+.top-right-cluster {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav-pill-btn {
+  height: 38px;
+  padding: 0 13px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.14);
+  color: #ffffff;
+  font-size: 12.5px;
+  font-weight: 800;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.14s ease;
+}
+
+.nav-pill-btn:hover, .nav-pill-btn.active {
+  background: #ffffff;
+  color: var(--vex-blue);
+}
+
+.nav-pill-btn:active {
+  transform: scale(0.97);
 }
 
 /* ==========================================================================
-   AUTHENTIC VEXCODE GO SCRATCH PUZZLE BLOCKS (With Top Notch & Bottom Tab)
+   2. GROUP TURN TRACKER RIBBON (HIỂN THỊ RÕ LƯỢT CỦA TỪNG BẠN TRONG NHÓM)
    ========================================================================== */
-.scratch-block {
-  position: relative;
+.group-turn-ribbon {
+  min-height: 64px;
+  padding: 8px 18px;
+  background: #ffffff;
+  border-bottom: 2px solid #dbeafe;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-shrink: 0;
+  flex-wrap: wrap;
+}
+
+.group-selector-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.group-chip-btn {
+  height: 40px;
+  padding: 0 14px;
+  border-radius: 10px;
+  border: 1.5px solid #cbd5e1;
+  background: #f8fafc;
+  color: #334155;
+  font-size: 13px;
+  font-weight: 800;
+  cursor: pointer;
   display: inline-flex;
   align-items: center;
-  flex-wrap: nowrap;
   gap: 6px;
-  min-height: 40px;
-  padding: 6px 12px;
-  border-radius: 5px;
+}
+
+.group-chip-btn.active {
+  background: #eff6ff;
+  border-color: var(--vex-blue);
+  color: var(--vex-blue);
+}
+
+/* Turn Balance Cards for Members in the Group */
+.members-turn-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.member-turn-pill {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 14px;
+  border-radius: 12px;
+  border: 2px solid #e2e8f0;
+  background: #f8fafc;
+  transition: all 0.2s ease;
+}
+
+.member-turn-pill.is-current-turn {
+  border-color: var(--member-color, #0284c7);
+  background: #ffffff;
+  box-shadow: 0 0 0 4px rgba(2, 132, 199, 0.16);
+  transform: scale(1.03);
+}
+
+.member-avatar-circle {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--member-color, #0284c7);
+  color: #ffffff;
+  font-weight: 900;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.member-turn-info {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.member-turn-name {
+  font-size: 13.5px;
+  font-weight: 900;
   color: #0f172a;
-  font-size: 12.5px;
+}
+
+.member-turn-stats {
+  font-size: 11.5px;
   font-weight: 700;
-  cursor: pointer;
-  width: fit-content;
-  max-width: 100%;
-  margin-bottom: 6px;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
-  transition: transform 0.12s ease, box-shadow 0.12s ease;
+  color: #64748b;
 }
 
-.scratch-block:hover {
-  filter: brightness(1.03);
+.turn-active-tag {
+  padding: 3px 8px;
+  border-radius: 99px;
+  background: var(--member-color, #0284c7);
+  color: #ffffff;
+  font-size: 10.5px;
+  font-weight: 900;
+  text-transform: uppercase;
+  animation: pulseTag 1.1s infinite alternate;
 }
 
-.scratch-block:active {
-  transform: scale(0.98);
+@keyframes pulseTag {
+  from { opacity: 0.78; transform: scale(0.97); }
+  to { opacity: 1; transform: scale(1.03); }
 }
 
-/* Top Puzzle Connector Notch & Bottom Tab */
-.scratch-block::before {
-  content: '';
-  position: absolute;
-  top: -4px;
-  left: 14px;
-  width: 16px;
-  height: 5px;
-  background: inherit;
-  border-top: inherit;
-  border-left: inherit;
-  border-right: inherit;
-  clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
-  display: none;
+/* ==========================================================================
+   3. MAIN QUIZ ARENA (iPad Touch Friendly)
+   ========================================================================== */
+.quiz-main-viewport {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.scratch-block::after {
-  content: '';
-  position: absolute;
-  bottom: -5px;
-  left: 14px;
-  width: 16px;
-  height: 5px;
-  background: inherit;
-  border-bottom: inherit;
-  clip-path: polygon(0% 0%, 100% 0%, 80% 100%, 20% 100%);
-  z-index: 2;
+.quiz-card-wrapper {
+  width: 100%;
+  max-width: 920px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
 }
 
-/* Category block colors matching codego.vex.com screenshot */
-.scratch-block.b-motion {
-  background: var(--cat-motion);
-  border: 1.5px solid var(--cat-motion-border);
+/* Active Student Turn Callout Banner (Anti-"1 bạn làm 1 bạn nhìn") */
+.active-turn-callout {
+  padding: 14px 20px;
+  border-radius: 16px;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.callout-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.callout-big-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.24);
+  border: 2.5px solid #ffffff;
+  font-size: 20px;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.callout-rule-badge {
+  background: rgba(15, 23, 42, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  padding: 7px 13px;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 800;
+  text-align: right;
+}
+
+/* Progress Step Dots */
+.question-progress-dots {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.q-dot {
+  flex: 1;
+  min-width: 36px;
+  height: 30px;
+  border-radius: 8px;
+  border: 1.5px solid #cbd5e1;
+  background: #ffffff;
+  font-size: 11.5px;
+  font-weight: 800;
+  color: #64748b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.q-dot.current {
+  border-color: var(--vex-blue);
+  background: #dbeafe;
+  color: var(--vex-blue);
+  font-weight: 900;
+}
+
+.q-dot.correct {
+  background: #dcfce7;
+  border-color: #16a34a;
+  color: #15803d;
+}
+
+.q-dot.wrong {
+  background: #ffe4e6;
+  border-color: #e11d48;
+  color: #be123c;
+}
+
+/* Question Main Box */
+.question-stage-box {
+  background: #ffffff;
+  border-radius: 20px;
+  border: 2px solid #dbeafe;
+  padding: 22px 24px;
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.06);
+}
+
+.question-top-row {
+  display: grid;
+  grid-template-columns: 185px 1fr;
+  gap: 20px;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.visual-preview-box {
+  min-height: 115px;
+  border-radius: 14px;
+  background: #0f172a;
+  border: 2px solid #cbd5e1;
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Authentic VEXcode GO Block Previews inside Questions */
+.vex-visual-block {
+  padding: 10px 14px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 800;
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  box-shadow: 0 3px 0 rgba(0, 0, 0, 0.25);
+}
+
+.vex-visual-block.hat-yellow {
+  background: #ffca28;
+  border: 1.5px solid #d4a106;
+  color: #0f172a;
+  border-radius: 22px 22px 6px 6px;
+}
+
+.vex-visual-block.motion-blue {
+  background: #85a5ff;
+  border: 1.5px solid #597ef7;
   color: #091e42;
 }
 
-.scratch-block.b-drivetrain {
-  background: var(--cat-drivetrain);
-  border: 1.5px solid var(--cat-drivetrain-border);
-  color: #ffffff;
-}
-
-.scratch-block.b-eye {
-  background: var(--cat-eye);
-  border: 1.5px solid var(--cat-eye-border);
-  color: #ffffff;
-}
-
-.scratch-block.b-magnet {
-  background: var(--cat-magnet);
-  border: 1.5px solid var(--cat-magnet-border);
-  color: #ffffff;
-}
-
-.scratch-block.b-console {
-  background: var(--cat-console);
-  border: 1.5px solid var(--cat-console-border);
-  color: #ffffff;
-}
-
-.scratch-block.b-logic {
-  background: var(--cat-logic);
-  border: 1.5px solid var(--cat-logic-border);
-  color: #ffffff;
-}
-
-.scratch-block.b-switch {
-  background: var(--cat-switch);
-  border: 1.5px solid #389e75;
-  color: #091e42;
-}
-
-/* Block inner rectangular dropdowns & white oval inputs (Just like screenshot!) */
-.block-rect-select {
-  background: rgba(255, 255, 255, 0.35);
+.v-rect {
+  background: rgba(255, 255, 255, 0.42);
   border: 1px solid rgba(0, 0, 0, 0.25);
   border-radius: 4px;
   padding: 2px 6px;
   font-size: 11.5px;
-  font-weight: 700;
-  color: inherit;
-  display: inline-flex;
-  align-items: center;
-  gap: 3px;
-  cursor: pointer;
 }
 
-.b-drivetrain .block-rect-select,
-.b-eye .block-rect-select,
-.b-magnet .block-rect-select,
-.b-console .block-rect-select,
-.b-logic .block-rect-select {
-  background: rgba(0, 0, 0, 0.18);
-  border-color: rgba(255, 255, 255, 0.4);
-  color: #fff;
-}
-
-.block-oval-input {
-  background: #ffffff;
-  color: #0f172a;
-  border: 1px solid rgba(0, 0, 0, 0.3);
-  border-radius: 99px;
-  padding: 2px 9px;
-  min-width: 34px;
-  text-align: center;
-  font-size: 11.5px;
-  font-weight: 800;
-  display: inline-block;
-}
-
-.block-oval-select {
+.v-oval {
   background: #ffffff;
   color: #0f172a;
   border: 1px solid rgba(0, 0, 0, 0.35);
   border-radius: 99px;
-  padding: 1px 7px;
+  padding: 2px 8px;
   font-size: 11.5px;
-  font-weight: 800;
-  cursor: pointer;
-  outline: none;
+  font-weight: 900;
 }
 
-/* Thinking Lock Pill attached to Flyout Blocks */
-.flyout-lock-pill {
-  margin-left: 4px;
-  padding: 2px 6px;
+.question-topic-tag {
+  display: inline-block;
+  padding: 4px 10px;
   border-radius: 99px;
-  font-size: 10px;
-  font-weight: 800;
-  background: rgba(15, 23, 42, 0.78);
-  color: #fde047;
-  display: inline-flex;
-  align-items: center;
-  gap: 3px;
-  white-space: nowrap;
-}
-
-.flyout-lock-pill.unlocked {
-  background: #059669;
-  color: #ffffff;
-}
-
-/* ==========================================================================
-   3C. MAIN WHITE BLOCKLY/SCRATCH WORKSPACE CANVAS
-   ========================================================================== */
-.vex-canvas-area {
-  flex: 1;
-  background: var(--vex-canvas-bg);
-  position: relative;
-  overflow: auto;
-  padding: 36px 44px;
-}
-
-/* Authentic Yellow "when started" Hat Block */
-.vex-hat-when-started {
-  position: relative;
-  background: #ffca28;
-  border: 1.5px solid #d4a106;
-  color: #0f172a;
-  font-weight: 800;
-  font-size: 13px;
-  padding: 14px 18px 10px 16px;
-  border-radius: 26px 26px 5px 5px;
-  width: fit-content;
-  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.12);
-}
-
-.vex-hat-when-started::after {
-  content: '';
-  position: absolute;
-  bottom: -5px;
-  left: 14px;
-  width: 16px;
-  height: 5px;
-  background: #ffca28;
-  border-bottom: 1.5px solid #d4a106;
-  clip-path: polygon(0% 0%, 100% 0%, 80% 100%, 20% 100%);
-  z-index: 3;
-}
-
-.canvas-program-stack {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-.canvas-program-stack .scratch-block {
-  margin-bottom: 0;
-  margin-top: -1px;
-  padding-right: 10px;
-}
-
-.canvas-program-stack .scratch-block.active-step-trace {
-  outline: 3.5px solid #f59e0b;
-  box-shadow: 0 0 18px rgba(245, 158, 11, 0.75);
-  z-index: 10;
-}
-
-.canvas-program-stack .scratch-block.active-step-run {
-  outline: 3.5px solid #10b981;
-  box-shadow: 0 0 18px rgba(16, 185, 129, 0.85);
-  z-index: 10;
-}
-
-.block-stack-actions {
-  display: inline-flex;
-  align-items: center;
-  gap: 3px;
-  margin-left: 8px;
-}
-
-.stack-mini-btn {
-  width: 22px;
-  height: 22px;
-  border-radius: 4px;
-  border: none;
-  background: rgba(0, 0, 0, 0.18);
-  color: #fff;
-  font-size: 11px;
-  font-weight: 800;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.stack-mini-btn:hover {
-  background: rgba(0, 0, 0, 0.35);
-}
-
-/* Top-Right Gray Gauge Watermark Icon (Exact match to screenshot) */
-.canvas-gauge-watermark {
-  position: absolute;
-  top: 18px;
-  right: 22px;
-  width: 56px;
-  height: 46px;
-  border-radius: 10px;
-  background: #cbd5e1;
-  color: #ffffff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  opacity: 0.85;
-  transition: opacity 0.15s ease;
-}
-
-.canvas-gauge-watermark:hover {
-  opacity: 1;
-  background: #94a3b8;
-}
-
-/* Bottom-Right Zoom Buttons (+, -, =) */
-.canvas-zoom-controls {
-  position: absolute;
-  bottom: 24px;
-  right: 22px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  z-index: 15;
-}
-
-.zoom-circle-btn {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  border: 1.5px solid #cbd5e1;
-  background: #ffffff;
-  color: #64748b;
-  font-size: 16px;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
-}
-
-.zoom-circle-btn:hover {
-  color: #0072ce;
-  border-color: #0072ce;
-}
-
-/* ==========================================================================
-   3D. DOCKED / FLOATING 2.5D SA BÀN PLAYGROUND (Right Side of Canvas)
-   ========================================================================== */
-.playground-dock-panel {
-  width: 455px;
-  background: #0f172a;
-  color: #f8fafc;
-  border-left: 2px solid #0072ce;
-  display: flex;
-  flex-direction: column;
-  flex-shrink: 0;
-  z-index: 20;
-  box-shadow: -6px 0 20px rgba(0, 0, 0, 0.12);
-}
-
-.playground-dock-panel.hidden {
-  display: none;
-}
-
-.playground-top-bar {
-  padding: 8px 12px;
-  background: #1e293b;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 6px;
-}
-
-.level-pill-btn {
-  padding: 5px 10px;
-  border-radius: 6px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  background: #334155;
-  color: #cbd5e1;
-  font-size: 11.5px;
-  font-weight: 700;
-  cursor: pointer;
-}
-
-.level-pill-btn.active {
-  background: #0072ce;
-  color: #ffffff;
-  border-color: #38bdf8;
-}
-
-.level-pill-btn.solved {
-  border-color: #10b981;
-  color: #6ee7b7;
-}
-
-.playground-mission-banner {
-  padding: 8px 12px;
-  background: rgba(2, 132, 199, 0.2);
-  border-bottom: 1px solid rgba(56, 189, 248, 0.25);
+  background: #eff6ff;
+  color: var(--vex-blue);
   font-size: 12px;
-  line-height: 1.35;
-  color: #e2e8f0;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
+  font-weight: 800;
+  margin-bottom: 8px;
 }
 
-.playground-arena-box {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px;
-  overflow: hidden;
-  background: radial-gradient(circle at center, #1e293b 0%, #090d16 100%);
-}
-
-/* 2.5D Grid Styles */
-.grid-board-frame {
-  padding: 12px;
-  border-radius: 16px;
-  background: linear-gradient(145deg, #431407, #270e05);
-  border: 2.5px solid #9a3412;
-  box-shadow: 0 10px 0 #1c0702, 0 16px 28px rgba(0, 0, 0, 0.6);
-}
-
-.grid-board-frame.theme-lab {
-  background: linear-gradient(145deg, #1e293b, #0f172a);
-  border-color: #475569;
-  box-shadow: 0 10px 0 #090d16;
-}
-
-.grid-board-frame.theme-ocean {
-  background: linear-gradient(145deg, #083344, #041e29);
-  border-color: #0e7490;
-}
-
-.vex-grid {
-  display: grid;
-  gap: 4px;
-  background: rgba(15, 23, 42, 0.68);
-  padding: 6px;
-  border-radius: 10px;
-  position: relative;
-}
-
-.grid-cell {
-  width: 54px;
-  height: 54px;
-  border-radius: 7px;
-  background: rgba(124, 45, 18, 0.42);
-  border: 1px solid rgba(251, 146, 60, 0.22);
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.theme-lab .grid-cell {
-  background: rgba(30, 41, 59, 0.85);
-  border-color: rgba(148, 163, 184, 0.2);
-}
-
-.cell-coord {
-  position: absolute;
-  top: 2px;
-  left: 4px;
-  font-size: 8.5px;
-  font-weight: 700;
-  color: rgba(255, 255, 255, 0.42);
-}
-
-.cell-mm-label {
-  position: absolute;
-  bottom: 2px;
-  right: 3px;
-  font-size: 8px;
-  font-weight: 700;
-  color: rgba(56, 189, 248, 0.55);
-}
-
-.grid-cell.ghost-trace {
-  background: rgba(245, 158, 11, 0.28) !important;
-  border: 1.5px dashed #fbbf24 !important;
-}
-
-.ghost-step-badge {
-  position: absolute;
-  z-index: 6;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background: #f59e0b;
+.question-prompt-text {
+  font-size: 18.5px;
+  font-weight: 900;
+  line-height: 1.4;
   color: #0f172a;
-  font-size: 10.5px;
+}
+
+/* 4 Touch Answer Buttons */
+.options-grid-2x2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.quiz-option-touch-btn {
+  min-height: 68px;
+  padding: 14px 16px;
+  border-radius: 14px;
+  border: 2px solid #cbd5e1;
+  background: #f8fafc;
+  color: #0f172a;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.35;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-align: left;
+  transition: all 0.15s ease;
+}
+
+.quiz-option-touch-btn:hover:not(:disabled) {
+  border-color: var(--vex-blue);
+  background: #eff6ff;
+}
+
+.quiz-option-touch-btn:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.quiz-option-touch-btn.correct {
+  background: #dcfce7 !important;
+  border-color: #16a34a !important;
+  color: #14532d !important;
+  box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.2);
+}
+
+.quiz-option-touch-btn.wrong {
+  background: #ffe4e6 !important;
+  border-color: #e11d48 !important;
+  color: #881337 !important;
+}
+
+.option-letter-box {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: var(--vex-blue);
+  color: #ffffff;
+  font-size: 15px;
   font-weight: 900;
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.grid-cell.visited-trail::after {
-  content: '';
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  background: rgba(56, 189, 248, 0.6);
-  box-shadow: 0 0 6px #38bdf8;
-  position: absolute;
-}
-
-.robot-sprite-layer {
-  position: absolute;
-  z-index: 10;
-  pointer-events: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 0.38s cubic-bezier(0.34, 1.25, 0.64, 1),
-              left 0.38s cubic-bezier(0.25, 1, 0.5, 1),
-              top 0.38s cubic-bezier(0.25, 1, 0.5, 1);
-}
-
-.sensor-beam-cone {
-  position: absolute;
-  top: -32px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 30px;
-  height: 34px;
-  background: linear-gradient(to top, rgba(16, 185, 129, 0.6), rgba(16, 185, 129, 0));
-  clip-path: polygon(35% 100%, 65% 100%, 100% 0%, 0% 0%);
-  opacity: 0;
-}
-
-.sensor-beam-cone.active {
-  opacity: 1;
-}
-
-.playground-telemetry-bar {
-  padding: 7px 12px;
-  background: #151f32;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 11px;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-
-.playground-action-footer {
-  padding: 9px 12px;
-  background: #0f172a;
-  border-top: 1px solid rgba(255, 255, 255, 0.12);
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-/* ==========================================================================
-   4. BOTTOM STATUS BAR (`▶ Errors ⚠️ 0 ❌ 0` - Exact screenshot match)
-   ========================================================================== */
-.vex-bottom-error-bar {
-  height: 26px;
-  background: #f1f3f6;
-  border-top: 1px solid var(--vex-border);
-  padding: 0 12px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 12px;
-  font-weight: 700;
-  color: #0072ce;
   flex-shrink: 0;
 }
 
+.quiz-option-touch-btn.correct .option-letter-box {
+  background: #16a34a;
+}
+
+.quiz-option-touch-btn.wrong .option-letter-box {
+  background: #e11d48;
+}
+
+/* Explanation & "Chuyển iPad cho bạn kế tiếp" Box */
+.answer-feedback-box {
+  margin-top: 16px;
+  padding: 16px 18px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.answer-feedback-box.ok {
+  background: #f0fdf4;
+  border: 2px solid #22c55e;
+  color: #14532d;
+}
+
+.answer-feedback-box.err {
+  background: #fffbeb;
+  border: 2px solid #f59e0b;
+  color: #78350f;
+}
+
 /* ==========================================================================
-   5. MODALS: BLUETOOTH BRAIN CONNECTION & "HỎI MỚI CHO GHÉP" POPUP
+   4. MANDATORY "PASS THE IPAD TO TEAMMATE" LOCK GATE MODAL
+   (BẮT BUỘC ĐỔI LƯỢT - KHÔNG CHO 1 BẠN LÀM 1 BẠN NHÌN)
    ========================================================================== */
-.modal-backdrop {
+.handoff-backdrop {
   position: fixed;
   inset: 0;
-  background: rgba(15, 23, 42, 0.72);
-  backdrop-filter: blur(5px);
+  background: rgba(15, 23, 42, 0.86);
+  backdrop-filter: blur(8px);
   z-index: 100;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 16px;
+  padding: 20px;
+  animation: fadeIn 0.2s ease;
 }
 
-.vex-modal-card {
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.handoff-gate-card {
   width: 100%;
-  max-width: 620px;
+  max-width: 580px;
   background: #ffffff;
-  color: #0f172a;
+  border-radius: 24px;
+  border: 4px solid var(--next-color, #10b981);
+  padding: 28px 26px;
+  text-align: center;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+  animation: popIn 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes popIn {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.handoff-flow-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  margin: 18px 0;
+}
+
+.handoff-student-box {
+  padding: 12px 16px;
   border-radius: 16px;
-  border: 2px solid #0072ce;
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
-  overflow: hidden;
-}
-
-.vex-modal-header {
-  background: var(--vex-header-blue);
-  color: #ffffff;
-  padding: 14px 18px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 16px;
-  font-weight: 800;
-}
-
-.vex-modal-body {
-  padding: 18px 20px;
-  max-height: 80dvh;
-  overflow-y: auto;
-}
-
-.unlock-option-btn {
-  width: 100%;
-  min-height: 48px;
-  padding: 10px 14px;
-  border-radius: 10px;
-  border: 1.5px solid #cbd5e1;
+  border: 2px solid #cbd5e1;
   background: #f8fafc;
-  color: #0f172a;
-  font-size: 14px;
-  font-weight: 700;
+  min-width: 165px;
+}
+
+.handoff-student-box.done-turn {
+  opacity: 0.6;
+}
+
+.handoff-student-box.next-turn {
+  border-color: var(--next-color, #10b981);
+  background: #f0fdf4;
+  transform: scale(1.06);
+  box-shadow: 0 8px 20px rgba(16, 185, 129, 0.2);
+}
+
+.btn-confirm-handoff {
+  width: 100%;
+  min-height: 60px;
+  border-radius: 16px;
+  border: none;
+  background: var(--next-color, #10b981);
+  color: #ffffff;
+  font-size: 17px;
+  font-weight: 900;
   cursor: pointer;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 10px;
-  text-align: left;
-  margin-bottom: 8px;
-  transition: all 0.14s ease;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.22);
+  transition: transform 0.14s ease;
 }
 
-.unlock-option-btn:hover {
-  border-color: #0072ce;
-  background: #f0f8ff;
+.btn-confirm-handoff:active {
+  transform: scale(0.97);
 }
 
-.unlock-option-btn.correct {
-  background: #dcfce7;
-  border-color: #16a34a;
-  color: #14532d;
-}
-
-.unlock-option-btn.wrong {
-  background: #ffe4e6;
-  border-color: #e11d48;
-  color: #881337;
-}
-
-.opt-letter {
-  width: 28px;
-  height: 28px;
-  border-radius: 6px;
-  background: #0072ce;
+/* Buttons */
+.action-btn {
+  min-height: 46px;
+  padding: 0 18px;
+  border-radius: 12px;
+  border: none;
+  background: var(--vex-blue);
   color: #ffffff;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+  font-size: 14.5px;
   font-weight: 800;
-  font-size: 12.5px;
-  flex-shrink: 0;
-}
-
-/* Bluetooth Console Log Table */
-.ble-packet-log {
-  background: #0f172a;
-  color: #38bdf8;
-  border-radius: 10px;
-  padding: 10px 12px;
-  font-family: 'Consolas', monospace;
-  font-size: 11.5px;
-  max-height: 150px;
-  overflow-y: auto;
-  margin-top: 10px;
-}
-
-.vex-btn {
+  cursor: pointer;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
-  min-height: 40px;
-  padding: 0 14px;
-  border-radius: 8px;
-  border: 1px solid #cbd5e1;
+  gap: 8px;
+  white-space: nowrap;
+}
+
+.action-btn.emerald {
+  background: #10b981;
+}
+
+.action-btn.amber {
+  background: #f59e0b;
+}
+
+.action-btn.outline {
   background: #ffffff;
   color: #0f172a;
-  font-size: 13px;
-  font-weight: 700;
-  cursor: pointer;
+  border: 1.5px solid #cbd5e1;
 }
 
-.vex-btn.primary {
-  background: #0072ce;
-  border-color: #005bb5;
-  color: #ffffff;
-}
-
-.vex-btn.emerald {
-  background: #10b981;
-  border-color: #059669;
-  color: #ffffff;
-}
-
-.vex-btn.amber {
-  background: #f59e0b;
-  border-color: #d97706;
-  color: #ffffff;
-}
-
-.vex-btn.rose {
-  background: #e11d48;
-  border-color: #be123c;
-  color: #ffffff;
+@media (max-width: 820px) {
+  .question-top-row {
+    grid-template-columns: 1fr;
+  }
+  .options-grid-2x2 {
+    grid-template-columns: 1fr;
+  }
 }
